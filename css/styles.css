@@ -10,20 +10,6 @@ html {
 
 body {
     background-color: #101113;
-    background-image:
-        radial-gradient(
-            ellipse 80% 58% at 16% 0%,
-            rgba(112, 84, 180, 0.14),
-            transparent 72%
-        ),
-        radial-gradient(
-            ellipse 72% 52% at 86% 0%,
-            rgba(181, 160, 255, 0.1),
-            transparent 74%
-        );
-    background-position: top center;
-    background-repeat: no-repeat;
-    background-size: 100% 720px;
     color: #f4f4f5;
     font-family: Arial, sans-serif;
 }
@@ -54,6 +40,25 @@ nav a {
 
 nav a:hover {
     color: #f4f4f5;
+}
+
+.header-glow {
+    height: 420px;
+    margin-bottom: -420px;
+    background:
+        radial-gradient(
+            ellipse 80% 100% at 16% 0%,
+            rgba(112, 84, 180, 0.24),
+            transparent 72%
+        ),
+        radial-gradient(
+            ellipse 72% 92% at 86% 0%,
+            rgba(181, 160, 255, 0.17),
+            transparent 74%
+        );
+    opacity: var(--header-glow-opacity, 1);
+    pointer-events: none;
+    transition: opacity 120ms linear;
 }
 
 .brand-name {
@@ -186,6 +191,7 @@ nav a:hover {
     background-color: #1a1c20;
     border: 1px solid #34363b;
     border-radius: 8px;
+    scroll-margin-top: 100px;
     transition:
         border-color 180ms ease,
         transform 180ms ease;
@@ -404,11 +410,32 @@ nav a:hover {
     nav {
         padding: 20px 24px;
         align-items: flex-start;
-        flex-direction: column;
         gap: 20px;
     }
 
+    .hero {
+        margin: 80px auto;
+    }
+
+    .header-glow {
+        height: 180px;
+        margin-bottom: -180px;
+        background:
+            radial-gradient(
+                ellipse 90% 100% at 18% 0%,
+                rgba(112, 84, 180, 0.3),
+                transparent 72%
+            ),
+            radial-gradient(
+                ellipse 85% 100% at 84% 0%,
+                rgba(181, 160, 255, 0.18),
+                transparent 74%
+            );
+        pointer-events: none;
+    }
+
     .nav-links {
+        align-self: center;
         gap: 14px;
     }
 
@@ -418,6 +445,7 @@ nav a:hover {
 
     .project-card {
         padding: 24px;
+        scroll-margin-top: 175px;
     }
 
     .section-heading h2 {

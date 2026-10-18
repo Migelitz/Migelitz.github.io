@@ -22,6 +22,35 @@ if ("IntersectionObserver" in window) {
     });
 }
 
+const headerGlowFadeDistance = 200;
+let headerGlowFrame;
+
+const updateHeaderGlow = () => {
+    headerGlowFrame = undefined;
+
+    const opacity = Math.max(
+        0,
+        1 - window.scrollY / headerGlowFadeDistance,
+    );
+
+    document.documentElement.style.setProperty(
+        "--header-glow-opacity",
+        opacity.toString(),
+    );
+};
+
+window.addEventListener(
+    "scroll",
+    () => {
+        if (headerGlowFrame === undefined) {
+            headerGlowFrame = window.requestAnimationFrame(updateHeaderGlow);
+        }
+    },
+    { passive: true },
+);
+
+updateHeaderGlow();
+
 const projectCards = document.querySelectorAll(".project-card");
 
 projectCards.forEach((card) => {
@@ -38,6 +67,11 @@ projectCards.forEach((card) => {
                 if (otherCard !== card && otherDetails.open) {
                     otherDetails.open = false;
                 }
+            });
+
+            card.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
             });
         }
     });
