@@ -482,6 +482,22 @@ a:focus-visible {
         transform 600ms ease;
 }
 
+.hero-label.reveal {
+    transition-delay: 200ms;
+}
+
+header h1.reveal {
+    transition-delay: 400ms;
+}
+
+header p.reveal {
+    transition-delay: 600ms;
+}
+
+.hero-actions.reveal {
+    transition: 800ms;
+}
+
 .project-card:nth-child(2) {
     transition-delay: 100ms;
 }
