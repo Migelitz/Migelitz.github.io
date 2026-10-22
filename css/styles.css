@@ -4,14 +4,328 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.return-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100;
+    display: grid;
+    width: 58px;
+    height: 58px;
+    place-items: center;
+    border: 1px solid rgba(181, 160, 255, 0.42);
+    border-radius: 50%;
+    background: rgba(26, 28, 32, 0.88);
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.28),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    color: #b5a0ff;
+    font: inherit;
+    line-height: 1;
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease,
+        visibility 180ms ease,
+        border-color 180ms ease,
+        background-color 180ms ease;
+}
+
+.return-button.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.return-button:hover {
+    border-color: #b5a0ff;
+    background: rgba(36, 33, 47, 0.94);
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.34),
+        0 0 0 4px rgba(181, 160, 255, 0.1);
+}
+
+.return-button svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+    transition: transform 180ms ease;
+}
+
+.return-button:hover svg {
+    transform: translateY(-2px);
+}
+
+.return-button:focus-visible {
+    outline: 2px solid #b5a0ff;
+    outline-offset: 4px;
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: 1px solid #34363b;
+    border-radius: 999px;
+    background: #1a1c20;
+    color: #b6b8c0;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        border-color 180ms ease,
+        color 180ms ease,
+        background-color 180ms ease;
+}
+
+.filter-btn:hover,
+.filter-btn[aria-pressed="true"] {
+    border-color: #b5a0ff;
+    color: #f4f4f5;
+}
+
+.filter-btn[aria-pressed="true"] {
+    background: rgba(181, 160, 255, 0.14);
+    box-shadow: inset 0 0 0 1px #b5a0ff;
+}
+
+.filter-btn:focus-visible {
+    outline: 2px solid #b5a0ff;
+    outline-offset: 4px;
+}
+
+.experience,
+.skills-section,
+.thinking-section {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 80px 48px;
+    border-top: 1px solid #34363b;
+}
+
+.experience-content-note,
+.content-note,
+.no-script-note {
+    max-width: 65ch;
+    margin-top: 16px;
+    color: #b6b8c0;
+    line-height: 1.7;
+}
+
+.affiliation-card,
+.exploring-card,
+.skill-group,
+.principle-card {
+    padding: 24px;
+    background: #1a1c20;
+    border: 1px solid #34363b;
+    border-radius: 8px;
+}
+
+.affiliation-card {
+    max-width: 720px;
+    margin-top: 40px;
+}
+
+.affiliation-card h3,
+.exploring-card h3,
+.skill-group h3,
+.principle-card h3 {
+    margin-top: 12px;
+    font-size: 1.25rem;
+}
+
+.affiliation-organization {
+    margin-top: 6px;
+    color: #b5a0ff;
+    font-weight: 600;
+}
+
+.timeline {
+    position: relative;
+    max-width: 720px;
+    margin-top: 40px;
+    margin-left: 8px; /* Aligns the dot visually with the card edge above */
+    padding-left: 28px;
+    border-left: 2px solid #34363b;
+}
+
+.timeline-item {
+    position: relative;
+    padding: 0 0 36px 0;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 4px; /* Stops the vertical line from dangling past the last item */
+}
+
+.timeline-item::before {
+    position: absolute;
+    top: 3px;
+    left: -36px; /* Exact center: -28px padding - 1px half-border - 7px half-dot */
+    width: 14px;
+    height: 14px;
+    box-sizing: border-box;
+    border: 3px solid #101113;
+    border-radius: 50%;
+    background: #b5a0ff;
+    content: "";
+}
+
+.timeline-meta,
+.item-meta,
+.skill-status {
+    color: #b5a0ff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.timeline-category {
+    margin-left: 12px;
+    color: #b6b8c0;
+}
+
+.timeline-item h3 {
+    margin-top: 10px;
+}
+
+.timeline-item > p:not(.timeline-meta),
+.exploring-item p:last-child,
+.principle-card p,
+.timeline-empty {
+    max-width: 65ch;
+    margin-top: 10px;
+    color: #b6b8c0;
+    line-height: 1.7;
+}
+
+.timeline-empty {
+    margin: 0;
+}
+
+.exploring-card {
+    max-width: 720px;
+    margin-top: 40px; /* Matches the 40px rhythm between affiliation and timeline */
+}
+
+.exploring-item {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #34363b;
+}
+
+.skills-grid,
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+}
+
+.skill-list {
+    display: grid;
+    gap: 18px;
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+.skill-heading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.skill-status {
+    color: #b6b8c0;
+    font-size: 0.7rem;
+}
+
+.evidence-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.evidence-link {
+    color: #b5a0ff;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+.evidence-link::after {
+    content: " ↗";
+}
+
+.evidence-link:hover {
+    color: #d0c3ff;
+}
+
+.principles-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.inline-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 14px;
+}
+
+.hidden,
+[hidden] {
+    display: none !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
 body {
     background-color: #101113;
     color: #f4f4f5;
-    font-family: Arial, sans-serif;
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        sans-serif;
 }
 
 nav {
@@ -292,6 +606,7 @@ nav a:hover {
 }
 
 .project-expanded p {
+    max-width: 65ch;
     margin-top: 10px;
     color: #b6b8c0;
     line-height: 1.7;
@@ -392,13 +707,22 @@ nav a:hover {
 
 /* Fix nav header blocking elements */
 #projects,
+#experience,
+#skills,
+#thinking,
 #about,
 #contact {
-    scroll-margin-top: 30px;
+    scroll-margin-top: 50px;
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .project-card:hover {
+    /* To increase the specificity */
+
+    html.js .project-card.reveal.is-visible:hover,
+    html.js .affiliation-card.reveal.is-visible:hover,
+    html.js .exploring-card.reveal.is-visible:hover,
+    html.js .skill-group.reveal.is-visible:hover,
+    html.js .principle-card.reveal.is-visible:hover {
         border-color: #71648f;
         transform: translateY(-3px);
     }
@@ -408,6 +732,7 @@ nav a:hover {
 
 @media (max-width: 700px) {
     nav {
+        flex-direction: column;
         padding: 20px 24px;
         align-items: flex-start;
         gap: 20px;
@@ -435,7 +760,8 @@ nav a:hover {
     }
 
     .nav-links {
-        align-self: center;
+        align-self: stretch;
+        flex-wrap: wrap;
         gap: 14px;
     }
 
@@ -445,7 +771,7 @@ nav a:hover {
 
     .project-card {
         padding: 24px;
-        scroll-margin-top: 175px;
+        scroll-margin-top: 165px;
     }
 
     .section-heading h2 {
@@ -461,9 +787,23 @@ nav a:hover {
     }
 
     #projects,
+    #experience,
+    #skills,
+    #thinking,
     #about,
     #contact {
-        scroll-margin-top: 75px;
+        scroll-margin-top: 135px;
+    }
+
+    .experience,
+    .skills-section,
+    .thinking-section {
+        padding: 64px 24px;
+    }
+
+    .skills-grid,
+    .principles-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -495,18 +835,18 @@ header p.reveal {
 }
 
 .hero-actions.reveal {
-    transition: 800ms;
+    transition-delay: 800ms;
 }
 
-.project-card:nth-child(2) {
+html.js .project-card.reveal:not(.is-visible):nth-child(2) {
     transition-delay: 100ms;
 }
 
-.project-card:nth-child(3) {
+html.js .project-card.reveal:not(.is-visible):nth-child(3) {
     transition-delay: 200ms;
 }
 
-.project-card:nth-child(4) {
+html.js .project-card.reveal:not(.is-visible):nth-child(4) {
     transition-delay: 300ms;
 }
 
@@ -523,7 +863,8 @@ html.js .reveal.is-visible {
 /* Respect reduced-motion preferences */
 
 @media (prefers-reduced-motion: reduce) {
-    html.js .reveal {
+    html.js .reveal,
+    html.js .reveal:not(.is-visible) {
         opacity: 1;
         transform: none;
         transition: none;
@@ -531,7 +872,10 @@ html.js .reveal.is-visible {
 
     .project-card,
     .project-expand-label,
-    .project-expand-label::after {
+    .project-expand-label::after,
+    .filter-btn,
+    .return-button,
+    .return-button svg {
         transition: none;
     }
 }

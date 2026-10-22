@@ -9,11 +9,11 @@
             content="Explore the software projects of Chyrus Miguel Macalla, a computer science undergraduate focused on Python automation, data processing, and software engineering."
         />
         <link rel="stylesheet" href="css/styles.css" />
-        <script src="js/main.js" defer></script>
+        <script type="module" src="js/main.js"></script>
     </head>
 
     <body>
-        <nav>
+        <nav aria-label="Primary">
             <div class="brand">
                 <p class="brand-name">Chyrus Miguel D. Macalla</p>
                 <p class="brand-role">Software Engineering In Progress</p>
@@ -21,6 +21,8 @@
 
             <div class="nav-links">
                 <a href="#projects">Work</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
                 <a href="#about">About</a>
                 <a
                     href="assets/macalla_resume.pdf"
@@ -35,305 +37,452 @@
         <!-- To give anchor for gradient -->
         <div class="header-glow" aria-hidden="true"></div>
 
-        <header class="hero">
-            <p class="hero-label reveal">Python · Automation · Software Engineering</p>
+        <button
+            class="return-button"
+            id="return-btn"
+            type="button"
+            aria-label="Return to top"
+            title="Return to top"
+        >
+            <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                aria-hidden="true"
+                focusable="false"
+            >
+                <path d="M12 19V5m-6 6 6-6 6 6" />
+            </svg>
+        </button>
 
-            <h1 class="reveal">I turn repetitive work into <span>reliable software</span></h1>
-
-            <p class="hero-description reveal">
-                I'm a Computer Science undergraduate focused on Python
-                automation, data processing, and building maintainable software
-                through practical engineering.
-            </p>
-
-            <div class="hero-actions reveal">
-                <a class="button button-primary" href="#projects"
-                    >Explore my work</a
-                >
-                <a class="button button-secondary" href="#contact"
-                    >Get in touch</a
-                >
-            </div>
-        </header>
-
-        <section class="projects" id="projects">
-            <div class="section-heading">
-                <p class="section-label reveal">SELECTED WORK</p>
-                <h2 class="reveal">Things I've built</h2>
-                <p class="section-description reveal">
-                    Practical projects. Thoughtful engineering. Real problems
-                </p>
-            </div>
-
-            <!--CleanSheet -->
-            <div class="project-grid">
-                <article class="project-card reveal">
-                    <details class="project-details-toggle">
-                        <summary>
-                            <p class="project-category">
-                                PYTHON · DATA PROCESSING
-                            </p>
-
-                            <h3>CleanSheet</h3>
-
-                            <p class="project-description">
-                                A desktop utility for spreadsheet cleaning, data
-                                quality checks, and repeatable data workflows.
-                            </p>
-                            <span class="project-expand-label"
-                                >Explore details</span
-                            >
-                        </summary>
-
-                        <div class="project-expanded">
-                            <h4>About the project</h4>
-
-                            <p>
-                                CleanSheet is a desktop utility designed to make
-                                spreadsheet cleaning and data-quality checks
-                                more accessible and repeatable.
-                            </p>
-
-                            <h4>Engineering focus</h4>
-
-                            <p>
-                                Data quality validation, memory-conscious data
-                                processing, background task execution, automated
-                                testing, and reproducible software releases.
-                            </p>
-
-                            <h4>Technology</h4>
-
-                            <div class="tech-stack-list">
-                                <span class="tech-stack">Python</span>
-                                <span class="tech-stack">Pandas</span>
-                                <span class="tech-stack">Tkinter</span>
-                                <span class="tech-stack">Nuitka</span>
-                                <span class="tech-stack">pytest</span>
-                            </div>
-
-                            <a
-                                class="project-link"
-                                href="https://github.com/Migelitz/CleanSheet"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                >View Project
-                                <span aria-hidden="true">↗</span></a
-                            >
-                        </div>
-                    </details>
-                </article>
-
-                <!-- SortFlow -->
-                <article class="project-card reveal">
-                    <details class="project-details-toggle">
-                        <summary>
-                            <p class="project-category">
-                                PYTHON · FILE ORGANIZATION
-                            </p>
-
-                            <h3>SortFlow</h3>
-
-                            <p class="project-description">
-                                An event-driven Linux daemon that automatically
-                                organizes files as they arrive in your Downloads
-                                folder.
-                            </p>
-
-                            <span class="project-expand-label">
-                                Explore details
-                            </span>
-                        </summary>
-
-                        <div class="project-expanded">
-                            <h4>About the project</h4>
-
-                            <p>
-                                SortFlow monitors filesystem activity and
-                                organizes files into appropriate directories. It
-                                accounts for files that are still being written,
-                                handles duplicate filenames, and uses queued
-                                processing to coordinate operations.
-                            </p>
-
-                            <h4>Engineering focus</h4>
-
-                            <p>
-                                Filesystem monitoring, concurrent processing,
-                                synchronization, error logging, and Linux
-                                systemd service management.
-                            </p>
-
-                            <h4>Technology</h4>
-
-                            <div class="tech-stack-list">
-                                <span class="tech-stack">Python</span>
-                                <span class="tech-stack">watchdog</span>
-                                <span class="tech-stack">pytest</span>
-                                <span class="tech-stack">systemd</span>
-                            </div>
-
-                            <a
-                                class="project-link"
-                                href="https://github.com/Migelitz/SortFlow"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                View Project <span aria-hidden="true">↗</span>
-                            </a>
-                        </div>
-                    </details>
-                </article>
-
-                <!-- AutoVal -->
-                <article class="project-card reveal">
-                    <details class="project-details-toggle">
-                        <summary>
-                            <p class="project-category">
-                                PYTHON · WEB APPLICATION · MACHINE LEARNING
-                            </p>
-
-                            <h3>AutoVal</h3>
-
-                            <p class="project-description">
-                                An end-to-end machine learning web application
-                                for predicting second-hand vehicle values.
-                            </p>
-
-                            <span class="project-expand-label">
-                                Explore details
-                            </span>
-                        </summary>
-
-                        <div class="project-expanded">
-                            <h4>About the project</h4>
-
-                            <p>
-                                AutoVal combines vehicle-listing data
-                                processing, a backend API, and a machine
-                                learning model to support second-hand vehicle
-                                valuation.
-                            </p>
-
-                            <h4>Engineering focus</h4>
-
-                            <p>
-                                Data ingestion and processing, database
-                                integration, REST API development, and machine
-                                learning inference within a web application.
-                            </p>
-
-                            <h4>Technology</h4>
-
-                            <div class="tech-stack-list">
-                                <span class="tech-stack">Python</span>
-                                <span class="tech-stack">FastAPI</span>
-                                <span class="tech-stack">Pandas</span>
-                                <span class="tech-stack">Scikit-learn</span>
-                                <span class="tech-stack">PostgreSQL</span>
-                            </div>
-
-                            <a
-                                class="project-link"
-                                href="https://github.com/ThreeBytes-Studio/AutoVal"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                View Project <span aria-hidden="true">↗</span>
-                            </a>
-                        </div>
-                    </details>
-                </article>
-
-                <!-- Sentinel Risk Engine -->
-                <article class="project-card reveal">
-                    <details class="project-details-toggle">
-                        <summary>
-                            <p class="project-category">
-                                MULTI-LANGUAGE · TRANSACTION SCORING
-                            </p>
-
-                            <h3>Sentinel Risk Engine</h3>
-
-                            <p class="project-description">
-                                A transaction-scoring system combining machine
-                                learning with a multi-language software
-                                architecture.
-                            </p>
-
-                            <span class="project-expand-label">
-                                Explore details
-                            </span>
-                        </summary>
-
-                        <div class="project-expanded">
-                            <h4>About the project</h4>
-
-                            <p>
-                                Sentinel Risk Engine explores how a machine
-                                learning model can be integrated into a
-                                transaction-processing system, connecting
-                                Python-based model development with Java and
-                                native code.
-                            </p>
-
-                            <h4>Engineering focus</h4>
-
-                            <p>
-                                Model inference, cross-language integration
-                                through JNI, performance evaluation, and
-                                transaction-scoring workflows.
-                            </p>
-
-                            <h4>Technology</h4>
-
-                            <div class="tech-stack-list">
-                                <span class="tech-stack">Python</span>
-                                <span class="tech-stack">XGBoost</span>
-                                <span class="tech-stack">m2cgen</span>
-                                <span class="tech-stack">C/C++</span>
-                                <span class="tech-stack">Java</span>
-                                <span class="tech-stack">SQLite</span>
-                            </div>
-
-                            <a
-                                class="project-link"
-                                href="https://github.com/Migelitz/Sentinel-Risk-Engine"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                View Project <span aria-hidden="true">↗</span>
-                            </a>
-                        </div>
-                    </details>
-                </article>
-            </div>
-        </section>
-
-        <section class="about" id="about">
-            <div class="about-heading">
-                <p class="section-label reveal">A LITTLE ABOUT ME</p>
-                <h2 class="reveal">Engineering is more than writing code.</h2>
-            </div>
-
-            <div class="about-content reveal">
-                <p>
-                    I'm a Computer Science undergraduate interested in building
-                    software that solves practical problems. I enjoy turning
-                    repetitive tasks into automated workflows and making data
-                    easier to work with.
+        <main id="main-content">
+            <header class="hero">
+                <p class="hero-label reveal">
+                    Python · Automation · Software Engineering
                 </p>
 
-                <p>
-                    My approach centers on maintainability, testing, debugging,
-                    and understanding why a system works—not just making it work
-                    once. I'm continuously learning through personal projects
-                    and hands-on experimentation.
-                </p>
-            </div>
-        </section>
+                <h1 class="reveal">
+                    I turn repetitive work into <span>reliable software</span>
+                </h1>
 
-        <section class="contact" id="contact">
+                <p class="hero-description reveal">
+                    I'm a Computer Science undergraduate focused on Python
+                    automation, data processing, and building maintainable
+                    software through practical engineering.
+                </p>
+
+                <div class="hero-actions reveal">
+                    <a class="button button-primary" href="#projects"
+                        >Explore my work</a
+                    >
+                    <a class="button button-secondary" href="#contact"
+                        >Get in touch</a
+                    >
+                </div>
+            </header>
+
+            <section class="projects" id="projects">
+                <div class="section-heading">
+                    <p class="section-label reveal">SELECTED WORK</p>
+                    <h2 class="reveal">Things I've built</h2>
+                    <p class="section-description reveal">
+                        Practical projects. Thoughtful engineering. Real
+                        problems
+                    </p>
+                    <div
+                        class="filter-bar"
+                        role="group"
+                        aria-label="Filter projects by category"
+                    >
+                        <button
+                            class="filter-btn"
+                            data-filter="all"
+                            aria-pressed="true"
+                        >
+                            All
+                        </button>
+                        <button
+                            class="filter-btn"
+                            data-filter="data-ml"
+                            aria-pressed="false"
+                        >
+                            Data &amp; ML
+                        </button>
+                        <button
+                            class="filter-btn"
+                            data-filter="automation-systems"
+                            aria-pressed="false"
+                        >
+                            Automation &amp; systems
+                        </button>
+                        <button
+                            class="filter-btn"
+                            data-filter="multi-language"
+                            aria-pressed="false"
+                        >
+                            Multi-language
+                        </button>
+                    </div>
+                    <p class="sr-only" id="filter-status" aria-live="polite">
+                        Showing 4 projects.
+                    </p>
+                    <noscript>
+                        <p class="no-script-note">
+                            Filter buttons are available with JavaScript
+                            enabled.
+                        </p>
+                    </noscript>
+                </div>
+
+                <!--CleanSheet -->
+                <div class="project-grid">
+                    <article
+                        class="project-card reveal"
+                        data-categories="data-ml automation-systems"
+                        id="project-cleansheet"
+                    >
+                        <details class="project-details-toggle">
+                            <summary>
+                                <p class="project-category">
+                                    PYTHON · DATA PROCESSING
+                                </p>
+
+                                <h3>CleanSheet</h3>
+
+                                <p class="project-description">
+                                    A desktop utility for spreadsheet cleaning,
+                                    data quality checks, and repeatable data
+                                    workflows.
+                                </p>
+                                <span class="project-expand-label"
+                                    >Explore details</span
+                                >
+                            </summary>
+
+                            <div class="project-expanded">
+                                <h4>About the project</h4>
+
+                                <p>
+                                    CleanSheet is a desktop utility designed to
+                                    make spreadsheet cleaning and data-quality
+                                    checks more accessible and repeatable.
+                                </p>
+
+                                <h4>Engineering focus</h4>
+
+                                <p>
+                                    Data quality validation, memory-conscious
+                                    data processing, background task execution,
+                                    automated testing, and reproducible software
+                                    releases.
+                                </p>
+
+                                <h4>Technology</h4>
+
+                                <div class="tech-stack-list">
+                                    <span class="tech-stack">Python</span>
+                                    <span class="tech-stack">Pandas</span>
+                                    <span class="tech-stack">Tkinter</span>
+                                    <span class="tech-stack">Nuitka</span>
+                                    <span class="tech-stack">pytest</span>
+                                </div>
+
+                                <a
+                                    class="project-link"
+                                    href="https://github.com/Migelitz/CleanSheet"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    >View Project
+                                    <span aria-hidden="true">↗</span></a
+                                >
+                            </div>
+                        </details>
+                    </article>
+
+                    <!-- SortFlow -->
+                    <article
+                        class="project-card reveal"
+                        data-categories="automation-systems"
+                        id="project-sortflow"
+                    >
+                        <details class="project-details-toggle">
+                            <summary>
+                                <p class="project-category">
+                                    PYTHON · FILE ORGANIZATION
+                                </p>
+
+                                <h3>SortFlow</h3>
+
+                                <p class="project-description">
+                                    An event-driven Linux daemon that
+                                    automatically organizes files as they arrive
+                                    in your Downloads folder.
+                                </p>
+
+                                <span class="project-expand-label">
+                                    Explore details
+                                </span>
+                            </summary>
+
+                            <div class="project-expanded">
+                                <h4>About the project</h4>
+
+                                <p>
+                                    SortFlow monitors filesystem activity and
+                                    organizes files into appropriate
+                                    directories. It accounts for files that are
+                                    still being written, handles duplicate
+                                    filenames, and uses queued processing to
+                                    coordinate operations.
+                                </p>
+
+                                <h4>Engineering focus</h4>
+
+                                <p>
+                                    Filesystem monitoring, concurrent
+                                    processing, synchronization, error logging,
+                                    and Linux systemd service management.
+                                </p>
+
+                                <h4>Technology</h4>
+
+                                <div class="tech-stack-list">
+                                    <span class="tech-stack">Python</span>
+                                    <span class="tech-stack">watchdog</span>
+                                    <span class="tech-stack">pytest</span>
+                                    <span class="tech-stack">systemd</span>
+                                </div>
+
+                                <a
+                                    class="project-link"
+                                    href="https://github.com/Migelitz/SortFlow"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    View Project
+                                    <span aria-hidden="true">↗</span>
+                                </a>
+                            </div>
+                        </details>
+                    </article>
+
+                    <!-- AutoVal -->
+                    <article
+                        class="project-card reveal"
+                        data-categories="data-ml"
+                        id="project-autoval"
+                    >
+                        <details class="project-details-toggle">
+                            <summary>
+                                <p class="project-category">
+                                    PYTHON · WEB APPLICATION · MACHINE LEARNING
+                                </p>
+
+                                <h3>AutoVal</h3>
+
+                                <p class="project-description">
+                                    An end-to-end machine learning web
+                                    application for predicting second-hand
+                                    vehicle values.
+                                </p>
+
+                                <span class="project-expand-label">
+                                    Explore details
+                                </span>
+                            </summary>
+
+                            <div class="project-expanded">
+                                <h4>About the project</h4>
+
+                                <p>
+                                    AutoVal combines vehicle-listing data
+                                    processing, a backend API, and a machine
+                                    learning model to support second-hand
+                                    vehicle valuation.
+                                </p>
+
+                                <h4>Engineering focus</h4>
+
+                                <p>
+                                    Data ingestion and processing, database
+                                    integration, REST API development, and
+                                    machine learning inference within a web
+                                    application.
+                                </p>
+
+                                <h4>Technology</h4>
+
+                                <div class="tech-stack-list">
+                                    <span class="tech-stack">Python</span>
+                                    <span class="tech-stack">FastAPI</span>
+                                    <span class="tech-stack">Pandas</span>
+                                    <span class="tech-stack">Scikit-learn</span>
+                                    <span class="tech-stack">PostgreSQL</span>
+                                </div>
+
+                                <a
+                                    class="project-link"
+                                    href="https://github.com/ThreeBytes-Studio/AutoVal"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    View Project
+                                    <span aria-hidden="true">↗</span>
+                                </a>
+                            </div>
+                        </details>
+                    </article>
+
+                    <!-- Sentinel Risk Engine -->
+                    <article
+                        class="project-card reveal"
+                        data-categories="data-ml multi-language"
+                        id="project-sentinel"
+                    >
+                        <details class="project-details-toggle">
+                            <summary>
+                                <p class="project-category">
+                                    MULTI-LANGUAGE · TRANSACTION SCORING
+                                </p>
+
+                                <h3>Sentinel Risk Engine</h3>
+
+                                <p class="project-description">
+                                    A transaction-scoring system combining
+                                    machine learning with a multi-language
+                                    software architecture.
+                                </p>
+
+                                <span class="project-expand-label">
+                                    Explore details
+                                </span>
+                            </summary>
+
+                            <div class="project-expanded">
+                                <h4>About the project</h4>
+
+                                <p>
+                                    Sentinel Risk Engine explores how a machine
+                                    learning model can be integrated into a
+                                    transaction-processing system, connecting
+                                    Python-based model development with Java and
+                                    native code.
+                                </p>
+
+                                <h4>Engineering focus</h4>
+
+                                <p>
+                                    Model inference, cross-language integration
+                                    through JNI, performance evaluation, and
+                                    transaction-scoring workflows.
+                                </p>
+
+                                <h4>Technology</h4>
+
+                                <div class="tech-stack-list">
+                                    <span class="tech-stack">Python</span>
+                                    <span class="tech-stack">XGBoost</span>
+                                    <span class="tech-stack">m2cgen</span>
+                                    <span class="tech-stack">C/C++</span>
+                                    <span class="tech-stack">Java</span>
+                                    <span class="tech-stack">SQLite</span>
+                                </div>
+
+                                <a
+                                    class="project-link"
+                                    href="https://github.com/Migelitz/Sentinel-Risk-Engine"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    View Project
+                                    <span aria-hidden="true">↗</span>
+                                </a>
+                            </div>
+                        </details>
+                    </article>
+                </div>
+            </section>
+
+            <section class="experience" id="experience">
+                <div class="section-heading">
+                    <p class="section-label reveal">
+                        EXPERIENCE &amp; PROGRESSION
+                    </p>
+                    <h2 class="reveal">Where I'm growing next</h2>
+                    <p class="section-description reveal">
+                        A concise record of verified work, leadership, and
+                        learning.
+                    </p>
+                </div>
+                <div id="experience-content"></div>
+                <noscript>
+                    <p class="no-script-note">
+                        Experience details are available with JavaScript
+                        enabled.
+                    </p>
+                </noscript>
+            </section>
+
+            <section class="skills-section" id="skills">
+                <div class="section-heading">
+                    <p class="section-label reveal">SKILLS &amp; TOOLS</p>
+                    <h2 class="reveal">Evidence over scorecards</h2>
+                    <p class="section-description reveal">
+                        Technologies are grouped by how I use them, with project
+                        evidence where available.
+                    </p>
+                </div>
+                <div id="skills-content"></div>
+                <noscript>
+                    <p class="no-script-note">
+                        Skills details are available with JavaScript enabled.
+                    </p>
+                </noscript>
+            </section>
+
+            <section class="thinking-section" id="thinking">
+                <div class="section-heading">
+                    <p class="section-label reveal">HOW I THINK</p>
+                    <h2 class="reveal">
+                        How I approach building software
+                    </h2>
+                </div>
+                <div id="thinking-content"></div>
+                <noscript>
+                    <p class="no-script-note">
+                        Engineering principles are available with JavaScript
+                        enabled.
+                    </p>
+                </noscript>
+            </section>
+
+            <section class="about" id="about">
+                <div class="about-heading">
+                    <p class="section-label reveal">A LITTLE ABOUT ME</p>
+                    <h2 class="reveal">
+                        Engineering is more than writing code.
+                    </h2>
+                </div>
+
+                <div class="about-content reveal">
+                    <p>
+                        I'm a Computer Science undergraduate interested in
+                        building software that solves practical problems. I
+                        enjoy turning repetitive tasks into automated workflows
+                        and making data easier to work with.
+                    </p>
+
+                    <p>
+                        My approach centers on maintainability, testing,
+                        debugging, and understanding why a system works—not just
+                        making it work once. I'm continuously learning through
+                        personal projects and hands-on experimentation.
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="contact" id="contact">
             <p class="section-label reveal">GET IN TOUCH</p>
 
             <h2 class="reveal">Have a project in mind?</h2>
@@ -344,15 +493,14 @@
             </p>
             <div class="contact-actions reveal">
                 <a
-                    class="button button-primary reveal"
+                    class="button button-primary"
                     href="mailto:macalla.chyrusmiguel@gmail.com"
                     target="_blank"
-                    rel="noopener noreferrer"
                 >
                     Contact me
                 </a>
                 <a
-                    class="github-link reveal"
+                    class="github-link"
                     href="https://github.com/Migelitz"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -373,6 +521,6 @@
                     <span aria-hidden="true">↗</span>
                 </a>
             </div>
-        </section>
+        </footer>
     </body>
 </html>
