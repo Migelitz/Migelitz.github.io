@@ -6,48 +6,34 @@ export const affiliation = {
 };
 
 export const milestones = [
-    // NOTE: links key-value can hold multiple links
     {
-        date: "OCT 2025",
-        category: "Competitive Programming",
-        title: "Placed 2nd Runner-Up at the RAITE Regional Programming Competition",
+        date: "Oct 2026",
+        category: "Python Automation & Data Engineering",
+        title: "Released CleanSheet v1.0.0",
         description:
-            "Competed in the CodeChum Programming Challenge as part of a two-person team, solving algorithmic problems under a three-hour time limit against teams from universities across Region III.",
-        links: [
-            {
-                label: "View Competition Post",
-                href: "https://www.facebook.com/share/p/1DGzAvWiWU/",
-            },
-        ],
-    },
-    {
-        date: "AUG 2026",
-        category: "Machine Learning & Systems",
-        title: "Built Sentinel Risk Engine",
-        description:
-            "Developed a transaction-scoring system integrating an XGBoost model with C, a C++ JNI bridge, and a Java 17 service. Explored model deployment, cross-language integration, and transaction auditing with SQLite.",
+            "Built and released a cross-platform desktop application for spreadsheet processing, data-quality analysis, and automated cleaning. Implemented resource-aware processing workflows, background execution, automated testing, diagnostic reporting, and Windows/Linux packaging.",
         links: [
             {
                 label: "View Project",
-                href: "https://github.com/Migelitz/sentinel-risk-engine",
+                href: "https://github.com/Migelitz/CleanSheet",
             },
         ],
     },
     {
-        date: "AUG 2026",
-        category: "Backend & Data Engineering",
-        title: "Led Backend and Database Development for AutoVal",
+        date: "Oct 2026",
+        category: "Python Automation",
+        title: "Built SortFlow",
         description:
-            "Served as Project Lead and Database/Backend Engineer for a full-stack vehicle valuation platform. Built a Python and Pandas pipeline to clean and prepare over 100,000 vehicle listings, designed PostgreSQL schemas, integrated backend data access, and coordinated code reviews and pull requests.",
+            "Developed a file-organization utility into a background automation service using filesystem monitoring, worker threads, queues, and safe file-handling logic. Added duplicate protection, rotating logs, automated tests, and Linux systemd integration.",
         links: [
             {
                 label: "View Project",
-                href: "https://github.com/ThreeBytes-Studio/AutoVal",
+                href: "https://github.com/Migelitz/SortFlow",
             },
         ],
     },
     {
-        date: "OCT 2026",
+        date: "Oct 2026",
         category: "Open-Source Contribution",
         title: "Merged My First GitHub Pull Request",
         description:
@@ -64,28 +50,41 @@ export const milestones = [
         ],
     },
     {
-        date: "OCT 2026",
-        category: "Python Automation",
-        title: "Built SortFlow",
+        date: "Aug 2026",
+        category: "Backend & Data Engineering",
+        title: "Led Backend and Database Development for AutoVal",
         description:
-            "Developed a file-organization utility into a background automation service using filesystem monitoring, worker threads, queues, and safe file-handling logic. Added duplicate protection, rotating logs, automated tests, and Linux systemd integration.",
+            "Served as Project Lead and Database/Backend Engineer for a full-stack vehicle valuation platform. Built a Python and Pandas pipeline to clean and prepare over 100,000 vehicle listings, designed PostgreSQL schemas, integrated backend data access, and coordinated code reviews and pull requests.",
         links: [
             {
                 label: "View Project",
-                href: "https://github.com/Migelitz/SortFlow",
+                href: "https://github.com/ThreeBytes-Studio/AutoVal",
             },
         ],
     },
     {
-        date: "OCT 2026",
-        category: "Python Automation & Data Engineering",
-        title: "Released CleanSheet v1.0.0",
+        date: "Aug 2026",
+        category: "Machine Learning & Systems",
+        title: "Built Sentinel Risk Engine",
         description:
-            "Built and released a cross-platform desktop application for spreadsheet processing, data-quality analysis, and automated cleaning. Implemented resource-aware processing workflows, background execution, automated testing, diagnostic reporting, and Windows/Linux packaging.",
+            "Developed a transaction-scoring system integrating an XGBoost model with C, a C++ JNI bridge, and a Java 17 service. Explored model deployment, cross-language integration, and transaction auditing with SQLite.",
         links: [
             {
                 label: "View Project",
-                href: "https://github.com/Migelitz/CleanSheet",
+                href: "https://github.com/Migelitz/Sentinel-Risk-Engine",
+            },
+        ],
+    },
+    {
+        date: "Oct 2025",
+        category: "Competitive Programming",
+        title: "Placed 2nd Runner-Up at the RAITE Regional Programming Competition",
+        description:
+            "Competed in the CodeChum Programming Challenge as part of a two-person team, solving algorithmic problems under a three-hour time limit against teams from universities across Region III.",
+        links: [
+            {
+                label: "View Competition Post",
+                href: "https://www.facebook.com/share/p/1DGzAvWiWU/",
             },
         ],
     },
@@ -114,7 +113,7 @@ export const currentlyExploring = [
 
 export const skills = [
     {
-        category: "Programming and data",
+        category: "Programming & data",
         items: [
             {
                 name: "Python",
@@ -164,7 +163,7 @@ export const skills = [
         ],
     },
     {
-        category: "Testing and automation",
+        category: "Testing & automation",
         items: [
             {
                 name: "pytest",
@@ -188,10 +187,10 @@ export const skills = [
         ],
     },
     {
-        category: "Tools and infrastructure",
+        category: "Tools & infrastructure",
         items: [
             {
-                name: "Linux and systemd",
+                name: "Linux & systemd",
                 status: "Established",
                 evidence: ["project-sortflow"],
             },
