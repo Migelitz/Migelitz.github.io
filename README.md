@@ -25,15 +25,21 @@ and contact links.
 
 - Responsive layout for desktop and mobile screens
 - Sticky navigation with anchor links to the main sections
-- Expandable project cards with repository links and technology details
+- Expandable project notes with repository links, technology details, and
+  verified evidence
 - Accessible project filtering by:
   - All
   - Data & ML
   - Automation & systems
   - Multi-language
 - Evidence-linked skills that navigate to the relevant project card
-- Data-driven experience timeline and current-focus section
+- A direct, recruiter-focused experience list with verified milestones and
+  project links
 - Data-driven skills and engineering-principles sections
+- An interactive system architecture inspector in the hero
+- Native project-note sections that open as addressable deep links
+- Scroll-progress indicator in the sticky navigation
+- Responsive project demo media and safely wrapped technical evidence
 - Scroll-reveal animations using `IntersectionObserver`
 - Return-to-top button with an inline SVG icon
 - Reduced-motion support for scrolling and animations
@@ -46,7 +52,7 @@ and contact links.
 | Project | Description | Main technologies |
 | --- | --- | --- |
 | [CleanSheet](https://github.com/Migelitz/CleanSheet) | Desktop utility for spreadsheet cleaning, data-quality checks, and repeatable data workflows | Python, Pandas, Tkinter, Nuitka, pytest |
-| [SortFlow](https://github.com/Migelitz/SortFlow) | Event-driven Linux daemon that organizes files as they arrive in a Downloads folder | Python, watchdog, pytest, systemd |
+| [SortFlow V2.0](https://github.com/Migelitz/SortFlow) | Content-aware Linux automation utility with deterministic classification, document/OCR extraction, SQLite telemetry, and safe background file handling | Python 3.12+, Watchdog, PyMuPDF, Tesseract OCR, SQLite, pytest, systemd |
 | [AutoVal](https://github.com/ThreeBytes-Studio/AutoVal) | Machine-learning web application for predicting second-hand vehicle values | Python, FastAPI, Pandas, scikit-learn, PostgreSQL |
 | [Sentinel Risk Engine](https://github.com/Migelitz/Sentinel-Risk-Engine) | Transaction-scoring system combining machine learning with a multi-language architecture | Python, XGBoost, m2cgen, C/C++, Java, SQLite |
 
@@ -72,7 +78,9 @@ dependency. The website can be served directly by any static web server.
 │   ├── content.js             # Experience, skills, focus areas, and principles
 │   └── main.js                # Rendering and interactive behavior
 ├── assets/
-│   └── macalla_resume.pdf     # Resume opened from the navigation
+│   ├── macalla_resume.pdf     # Resume opened from the navigation
+│   ├── *_demo.mp4             # Project demonstration videos
+│   └── autoval_image.jpg      # AutoVal project showcase
 └── README.md
 ```
 
@@ -106,10 +114,12 @@ adds the following interactions:
 
 - Project category filtering with an `aria-live` result summary
 - Evidence links that reveal and scroll to their target project
-- One-open-project behavior for the expandable cards
+- Addressable `<details>` project notes that open from direct links and
+  evidence navigation
+- Header scroll-progress updates
 - Scroll-triggered reveal animations
-- Fading header glow based on scroll position
 - Return-to-top visibility and scrolling
+- Accessible inspector tabs and pipeline-node states in the hero
 
 ## Run locally
 

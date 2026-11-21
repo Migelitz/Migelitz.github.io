@@ -7,6 +7,21 @@ export const affiliation = {
 
 export const milestones = [
     {
+        archiveLevel: "quick",
+        date: "Nov 2026",
+        category: "Python Automation",
+        title: "Updated Sortflow V2.0.0",
+        description:
+            "Evolved SortFlow into a deterministic, content-aware file-organization service with weighted heuristic classification, multi-format extraction, lazy OCR loading, SQLite telemetry, safe collision handling, automated tests, and Linux systemd integration.",
+        links: [
+            {
+                label: "View project",
+                href: "https://github.com/Migelitz/SortFlow",
+            },
+        ],
+    },
+    {
+        archiveLevel: "quick",
         date: "Oct 2026",
         category: "Python Automation & Data Engineering",
         title: "Released CleanSheet v1.0.0",
@@ -14,12 +29,13 @@ export const milestones = [
             "Built and released a cross-platform desktop application for spreadsheet processing, data-quality analysis, and automated cleaning. Implemented resource-aware processing workflows, background execution, automated testing, diagnostic reporting, and Windows/Linux packaging.",
         links: [
             {
-                label: "View Project",
+                label: "View project",
                 href: "https://github.com/Migelitz/CleanSheet",
             },
         ],
     },
     {
+        archiveLevel: "overview",
         date: "Oct 2026",
         category: "Python Automation",
         title: "Built SortFlow",
@@ -27,12 +43,13 @@ export const milestones = [
             "Developed a file-organization utility into a background automation service using filesystem monitoring, worker threads, queues, and safe file-handling logic. Added duplicate protection, rotating logs, automated tests, and Linux systemd integration.",
         links: [
             {
-                label: "View Project",
+                label: "View project",
                 href: "https://github.com/Migelitz/SortFlow",
             },
         ],
     },
     {
+        archiveLevel: "overview",
         date: "Oct 2026",
         category: "Open-Source Contribution",
         title: "Merged My First GitHub Pull Request",
@@ -40,16 +57,17 @@ export const milestones = [
             "Made my first merged contribution to an external GitHub repository by submitting LeetCode solutions while following the project's contribution guidelines. A first step toward collaborating on shared codebases and contributing to open-source software.",
         links: [
             {
-                label: "View Merged Pull Request",
+                label: "View merged pull request",
                 href: "https://github.com/Stewie-pixel/claude-with-leetcode/pull/623",
             },
             {
-                label: "View Repository",
+                label: "View repository",
                 href: "https://github.com/Stewie-pixel/claude-with-leetcode",
             },
         ],
     },
     {
+        archiveLevel: "quick",
         date: "Aug 2026",
         category: "Backend & Data Engineering",
         title: "Led Backend and Database Development for AutoVal",
@@ -57,12 +75,13 @@ export const milestones = [
             "Served as Project Lead and Database/Backend Engineer for a full-stack vehicle valuation platform. Built a Python and Pandas pipeline to clean and prepare over 100,000 vehicle listings, designed PostgreSQL schemas, integrated backend data access, and coordinated code reviews and pull requests.",
         links: [
             {
-                label: "View Project",
+                label: "View project",
                 href: "https://github.com/ThreeBytes-Studio/AutoVal",
             },
         ],
     },
     {
+        archiveLevel: "quick",
         date: "Aug 2026",
         category: "Machine Learning & Systems",
         title: "Built Sentinel Risk Engine",
@@ -70,12 +89,13 @@ export const milestones = [
             "Developed a transaction-scoring system integrating an XGBoost model with C, a C++ JNI bridge, and a Java 17 service. Explored model deployment, cross-language integration, and transaction auditing with SQLite.",
         links: [
             {
-                label: "View Project",
+                label: "View project",
                 href: "https://github.com/Migelitz/Sentinel-Risk-Engine",
             },
         ],
     },
     {
+        archiveLevel: "quick",
         date: "Oct 2025",
         category: "Competitive Programming",
         title: "Placed 2nd Runner-Up at the RAITE Regional Programming Competition",
@@ -83,7 +103,7 @@ export const milestones = [
             "Competed in the CodeChum Programming Challenge as part of a two-person team, solving algorithmic problems under a three-hour time limit against teams from universities across Region III.",
         links: [
             {
-                label: "View Competition Post",
+                label: "View competition post",
                 href: "https://www.facebook.com/share/p/1DGzAvWiWU/",
             },
         ],

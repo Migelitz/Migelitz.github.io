@@ -2,7 +2,10 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+        />
         <title>Chyrus Miguel D. Macalla — Software Engineering</title>
         <meta
             name="description"
@@ -11,17 +14,23 @@
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta
             http-equiv="Content-Security-Policy"
-            content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests;"
+            content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests;"
         />
         <meta name="color-scheme" content="dark" />
         <meta name="theme-color" content="#0b0c0e" />
         <link rel="stylesheet" href="css/styles.css" />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='2' fill='%230b0c0e'/%3E%3Crect x='2' y='2' width='28' height='28' rx='1' fill='none' stroke='%232b303a' stroke-width='2'/%3E%3Cpath d='M9 11l6 5-6 5M17 21h6' fill='none' stroke='%23e05638' stroke-width='2.5' stroke-linecap='square'/%3E%3C/svg%3E"
+        />
         <script type="module" src="js/main.js"></script>
     </head>
     <body>
         <a class="skip-link" href="#main-content">Skip to main content</a>
 
         <header class="site-header" id="site-header">
+            <div class="scroll-progress" aria-hidden="true"></div>
             <nav class="site-nav" aria-label="Primary">
                 <a
                     class="brand"
@@ -74,6 +83,7 @@
         <main id="main-content">
             <!-- HERO & AT A GLANCE -->
             <section class="hero" id="top" aria-labelledby="hero-heading">
+                <div class="hero-layout">
                 <div class="hero-intro">
                     <p class="hero-identity reveal">
                         <span class="hero-identity-name"
@@ -127,6 +137,69 @@
                     </div>
                 </div>
 
+                <aside class="system-inspector reveal" aria-labelledby="inspector-heading">
+                    <div class="inspector-header">
+                        <p class="inspector-kicker">System Architecture Inspector</p>
+                        <span class="inspector-status"><span aria-hidden="true"></span> LIVE</span>
+                    </div>
+                    <h2 id="inspector-heading" class="sr-only">Project system inspector</h2>
+                    <div class="inspector-tabs" role="tablist" aria-label="Systems">
+                        <button class="inspector-tab" type="button" role="tab" id="tab-cleansheet" aria-selected="true" aria-controls="panel-cleansheet" tabindex="0" data-inspector="cleansheet">CleanSheet</button>
+                        <button class="inspector-tab" type="button" role="tab" id="tab-sortflow" aria-selected="false" aria-controls="panel-sortflow" tabindex="-1" data-inspector="sortflow">SortFlow</button>
+                        <button class="inspector-tab" type="button" role="tab" id="tab-autoval" aria-selected="false" aria-controls="panel-autoval" tabindex="-1" data-inspector="autoval">AutoVal</button>
+                        <button class="inspector-tab" type="button" role="tab" id="tab-sentinel" aria-selected="false" aria-controls="panel-sentinel" tabindex="-1" data-inspector="sentinel">Sentinel</button>
+                    </div>
+                    <div class="inspector-panel" id="panel-cleansheet" role="tabpanel" aria-labelledby="tab-cleansheet" data-inspector-panel="cleansheet">
+                        <div class="inspector-pipeline" aria-label="CleanSheet processing pipeline">
+                            <button type="button" class="pipeline-node" data-inspector-role="Reads spreadsheet files and prepares them as a resource-aware CSV stream.">CSV In</button><span class="pipeline-arrow" aria-hidden="true">→</span><button type="button" class="pipeline-node" data-inspector-role="Streams data into bounded chunks instead of loading the full sheet into memory.">Chunks</button><span class="pipeline-arrow" aria-hidden="true">→</span><button type="button" class="pipeline-node" data-inspector-role="Worker threads process cleaning tasks while keeping the desktop interface responsive.">Workers</button><span class="pipeline-arrow" aria-hidden="true">→</span><button type="button" class="pipeline-node" data-inspector-role="Produces diagnostic output and a repeatable cleaning report.">Report</button>
+                        </div>
+                        <p class="inspector-detail" aria-live="polite">Select a node to inspect its role.</p>
+                        <dl class="inspector-metrics">
+                            <div><dt>Processing</dt><dd>Streaming CSV</dd></div>
+                            <div><dt>Execution</dt><dd>Worker threads</dd></div>
+                            <div><dt>Release</dt><dd>v1.0.0</dd></div>
+                            <div><dt>Tests</dt><dd>pytest</dd></div>
+                        </dl>
+                    </div>
+                    <div class="inspector-panel" id="panel-sortflow" role="tabpanel" aria-labelledby="tab-sortflow" data-inspector-panel="sortflow" hidden>
+                        <div class="inspector-pipeline" aria-label="SortFlow processing pipeline">
+                            <button type="button" class="pipeline-node" data-inspector-role="Watchdog observes filesystem events and adds work to a thread-safe queue.">Watchdog</button><span class="pipeline-arrow" aria-hidden="true">→</span><button type="button" class="pipeline-node" data-inspector-role="Checks file size and modification time across three one-second stability intervals.">Stability</button><span class="pipeline-arrow" aria-hidden="true">→</span><button type="button" class="pipeline-node" data-inspector-role="Combines weighted filename signals with lazy TXT, PDF, DOCX, PPTX, image, and OCR extraction.">Heuristic/OCR</button><span class="pipeline-arrow" aria-hidden="true">→</span><button type="button" class="pipeline-node" data-inspector-role="Uses atomic no-overwrite moves to route files safely into their destination.">Route</button>
+                        </div>
+                        <p class="inspector-detail" aria-live="polite">Select a node to inspect its role.</p>
+                        <dl class="inspector-metrics">
+                            <div><dt>Latency path</dt><dd>3 × 1s checks</dd></div>
+                            <div><dt>Extractor</dt><dd>1.32 MB</dd></div>
+                            <div><dt>Heavy libs</dt><dd>31.39 MB</dd></div>
+                            <div><dt>Tests</dt><dd>33/33</dd></div>
+                        </dl>
+                    </div>
+                    <div class="inspector-panel" id="panel-autoval" role="tabpanel" aria-labelledby="tab-autoval" data-inspector-panel="autoval" hidden>
+                        <div class="inspector-pipeline" aria-label="AutoVal processing pipeline">
+                            <button type="button" class="pipeline-node" data-inspector-role="Ingests and prepares more than 100,000 secondary-market vehicle listings.">100k+ Listings</button><span class="pipeline-arrow" aria-hidden="true">→</span><button type="button" class="pipeline-node" data-inspector-role="Pandas validates, cleans, and structures noisy listing records.">Pandas</button><span class="pipeline-arrow" aria-hidden="true">→</span><button type="button" class="pipeline-node" data-inspector-role="PostgreSQL stores the cleaned records and application data.">PostgreSQL</button><span class="pipeline-arrow" aria-hidden="true">→</span><button type="button" class="pipeline-node" data-inspector-role="FastAPI exposes Scikit-learn valuation inference through the web application.">Inference</button>
+                        </div>
+                        <p class="inspector-detail" aria-live="polite">Select a node to inspect its role.</p>
+                        <dl class="inspector-metrics">
+                            <div><dt>Dataset</dt><dd>100k+ listings</dd></div>
+                            <div><dt>Storage</dt><dd>PostgreSQL</dd></div>
+                            <div><dt>API</dt><dd>FastAPI</dd></div>
+                            <div><dt>Model</dt><dd>Scikit-learn</dd></div>
+                        </dl>
+                    </div>
+                    <div class="inspector-panel" id="panel-sentinel" role="tabpanel" aria-labelledby="tab-sentinel" data-inspector-panel="sentinel" hidden>
+                        <div class="inspector-pipeline" aria-label="Sentinel processing pipeline">
+                            <button type="button" class="pipeline-node" data-inspector-role="XGBoost provides the Python-trained transaction scoring model.">XGBoost</button><span class="pipeline-arrow" aria-hidden="true">→</span><button type="button" class="pipeline-node" data-inspector-role="m2cgen converts the trained model into native C inference code.">C</button><span class="pipeline-arrow" aria-hidden="true">→</span><button type="button" class="pipeline-node" data-inspector-role="The C++ JNI bridge exposes native scoring to Java.">JNI</button><span class="pipeline-arrow" aria-hidden="true">→</span><button type="button" class="pipeline-node" data-inspector-role="Java 17 runs the transaction service without a Python runtime in the execution path.">Java 17</button>
+                        </div>
+                        <p class="inspector-detail" aria-live="polite">Select a node to inspect its role.</p>
+                        <dl class="inspector-metrics">
+                            <div><dt>Runtime</dt><dd>No Python</dd></div>
+                            <div><dt>Bridge</dt><dd>C++ / JNI</dd></div>
+                            <div><dt>Service</dt><dd>Java 17</dd></div>
+                            <div><dt>Audit</dt><dd>SQLite</dd></div>
+                        </dl>
+                    </div>
+                </aside>
+                </div>
+
                 <!-- Editorial At a Glance Strip -->
                 <aside class="tldr-strip reveal" aria-label="At a glance">
                     <p class="tldr-kicker">At a glance</p>
@@ -146,7 +219,7 @@
                                 <a href="#project-cleansheet">CleanSheet</a>
                                 (v1.0.0 desktop utility),
                                 <a href="#project-sortflow">SortFlow</a>
-                                (systemd file daemon),
+                                (V2.0 content-aware systemd daemon),
                                 <a href="#project-autoval">AutoVal</a> (100k+
                                 listings pipeline), and
                                 <a href="#project-sentinel"
@@ -266,10 +339,25 @@
                             </div>
                             <h3 id="title-cleansheet">CleanSheet</h3>
                             <p class="project-description">
-                                A desktop utility for spreadsheet cleaning,
-                                data-quality checks, and repeatable data
-                                workflows.
+                                Clean spreadsheets consistently with repeatable
+                                data-quality checks and desktop workflows.
                             </p>
+                            <div class="project-actions">
+                                <a
+                                    class="project-link"
+                                    href="https://github.com/Migelitz/CleanSheet"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    >View repository
+                                    <span aria-hidden="true">&#8599;</span></a
+                                >
+                                <a
+                                    class="project-notes-link"
+                                    href="#project-notes-cleansheet"
+                                    >View project notes
+                                    <span aria-hidden="true">&darr;</span></a
+                                >
+                            </div>
                             <ul
                                 class="tech-stack-list"
                                 aria-label="Technologies used in CleanSheet"
@@ -280,25 +368,20 @@
                                 <li class="tech-stack">Nuitka</li>
                                 <li class="tech-stack">pytest</li>
                             </ul>
-                            <div class="project-actions">
-                                <a
-                                    class="project-link"
-                                    href="https://github.com/Migelitz/CleanSheet"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    >Repository
-                                    <span aria-hidden="true">&#8599;</span></a
-                                >
-                                <a
-                                    class="project-notes-link"
-                                    href="#project-notes-cleansheet"
-                                    >Project notes
-                                    <span aria-hidden="true">&darr;</span></a
-                                >
-                            </div>
                         </div>
 
                         <div class="project-narrative">
+                            <div class="project-visual cleansheet-visual" aria-label="CleanSheet demo">
+                                <video
+                                    class="cleansheet-video"
+                                    controls
+                                    preload="metadata"
+                                    aria-label="CleanSheet spreadsheet processing demonstration"
+                                >
+                                    <source src="assets/cleansheet_demo.mp4" type="video/mp4" />
+                                    Your browser does not support HTML video.
+                                </video>
+                            </div>
                             <dl class="project-specs">
                                 <div class="spec-item">
                                     <dt>Role</dt>
@@ -337,15 +420,17 @@
                                 </div>
                             </dl>
 
-                            <section
+                            <details
                                 class="project-notes"
                                 id="project-notes-cleansheet"
-                                aria-labelledby="notes-heading-cleansheet"
+                                aria-label="CleanSheet project notes"
                             >
+                                <summary class="project-notes-summary">
+                                    <span>Project notes &mdash; CleanSheet</span>
+                                    <span class="project-notes-toggle" aria-hidden="true">+</span>
+                                </summary>
+                                <div class="project-notes-content">
                                 <div class="project-notes-header">
-                                    <h4 id="notes-heading-cleansheet">
-                                        Project notes &mdash; CleanSheet
-                                    </h4>
                                     <div
                                         class="project-context-nav"
                                         aria-label="CleanSheet section navigation"
@@ -371,7 +456,8 @@
                                     the Tkinter interface responsive, and
                                     standalone binary compilation via Nuitka.
                                 </p>
-                            </section>
+                                </div>
+                            </details>
                         </div>
                     </article>
 
@@ -386,44 +472,57 @@
                             <div class="project-meta-line">
                                 <span class="project-number">02</span>
                                 <span class="project-category"
-                                    >Python &middot; File organization &middot;
-                                    Linux daemon</span
+                                    >Python &middot; Content-aware automation &middot;
+                                    Linux daemon &middot; V2.0</span
                                 >
                             </div>
                             <h3 id="title-sortflow">SortFlow</h3>
                             <p class="project-description">
-                                An event-driven Linux daemon that automatically
-                                organizes files as they arrive in your Downloads
-                                folder.
+                                Automatically classify and route downloads while
+                                preventing accidental overwrites and file loss.
                             </p>
-                            <ul
-                                class="tech-stack-list"
-                                aria-label="Technologies used in SortFlow"
-                            >
-                                <li class="tech-stack">Python</li>
-                                <li class="tech-stack">watchdog</li>
-                                <li class="tech-stack">pytest</li>
-                                <li class="tech-stack">systemd</li>
-                            </ul>
                             <div class="project-actions">
                                 <a
                                     class="project-link"
                                     href="https://github.com/Migelitz/SortFlow"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    >Repository
+                                    >View repository
                                     <span aria-hidden="true">&#8599;</span></a
                                 >
                                 <a
                                     class="project-notes-link"
                                     href="#project-notes-sortflow"
-                                    >Project notes
+                                    >View project notes
                                     <span aria-hidden="true">&darr;</span></a
                                 >
                             </div>
+                            <ul
+                                class="tech-stack-list"
+                                aria-label="Technologies used in SortFlow"
+                            >
+                                <li class="tech-stack">Python 3.12+</li>
+                                <li class="tech-stack">Watchdog 6.0.0</li>
+                                <li class="tech-stack">PyMuPDF</li>
+                                <li class="tech-stack">Tesseract OCR</li>
+                                <li class="tech-stack">SQLite</li>
+                                <li class="tech-stack">pytest</li>
+                                <li class="tech-stack">systemd</li>
+                            </ul>
                         </div>
 
                         <div class="project-narrative">
+                            <div class="project-visual sortflow-visual">
+                                <video
+                                    class="sortflow-video"
+                                    controls
+                                    preload="metadata"
+                                    aria-label="SortFlow V2.0 content-aware file classification demonstration"
+                                >
+                                    <source src="assets/sortflow_demo.mp4" type="video/mp4" />
+                                    Your browser does not support HTML video.
+                                </video>
+                            </div>
                             <dl class="project-specs">
                                 <div class="spec-item">
                                     <dt>Role</dt>
@@ -432,41 +531,45 @@
                                 <div class="spec-item">
                                     <dt>What I solved</dt>
                                     <dd>
-                                        Simple file-watcher scripts often
-                                        corrupt active downloads by moving
-                                        partially written files or overwriting
-                                        duplicate filenames.
+                                        Extension-only sorting cannot distinguish
+                                        contextual files, and moving partially
+                                        written downloads or overwriting
+                                        duplicates can corrupt or lose data.
                                     </dd>
                                 </div>
                                 <div class="spec-item">
                                     <dt>What I built</dt>
                                     <dd>
-                                        A background automation service using
-                                        filesystem monitoring, worker threads,
-                                        queued processing, duplicate protection,
-                                        and rotating logs.
+                                        A deterministic classifier plus a
+                                        Watchdog event queue, worker thread,
+                                        stability checks, atomic no-overwrite
+                                        moves, SQLite telemetry, and lazy
+                                        document/OCR processing.
                                     </dd>
                                 </div>
                                 <div class="spec-item">
                                     <dt>Engineering focus</dt>
                                     <dd>
-                                        Filesystem monitoring, concurrent
-                                        processing, synchronization, error
-                                        logging, and Linux systemd service
-                                        management.
+                                        Heuristic classification, format
+                                        extraction, filesystem safety,
+                                        background concurrency, memory behavior,
+                                        automated testing, and Linux service
+                                        integration.
                                     </dd>
                                 </div>
                             </dl>
 
-                            <section
+                            <details
                                 class="project-notes"
                                 id="project-notes-sortflow"
-                                aria-labelledby="notes-heading-sortflow"
+                                aria-label="SortFlow project notes"
                             >
+                                <summary class="project-notes-summary">
+                                    <span>Project notes &mdash; SortFlow</span>
+                                    <span class="project-notes-toggle" aria-hidden="true">+</span>
+                                </summary>
+                                <div class="project-notes-content">
                                 <div class="project-notes-header">
-                                    <h4 id="notes-heading-sortflow">
-                                        Project notes &mdash; SortFlow
-                                    </h4>
                                     <div
                                         class="project-context-nav"
                                         aria-label="SortFlow section navigation"
@@ -484,15 +587,123 @@
                                     </div>
                                 </div>
                                 <p>
-                                    SortFlow monitors filesystem activity and
-                                    organizes files into appropriate
-                                    directories. It accounts for files that are
-                                    still being written, handles duplicate
-                                    filenames safely, and coordinates operations
-                                    through worker queues as a persistent Linux
-                                    systemd service.
+                                    V2.0 evolved SortFlow from extension-based
+                                    sorting into a deterministic heuristic
+                                    classification engine. It combines filename
+                                    keywords, file extensions, extracted
+                                    document content, and weighted keyword
+                                    signals before assigning School, Work,
+                                    Personal, or an Uncategorized fallback.
                                 </p>
-                            </section>
+
+                                <div class="sortflow-details">
+                                    <section
+                                        class="sortflow-detail-block"
+                                        aria-labelledby="sortflow-classification-heading"
+                                    >
+                                        <h4 id="sortflow-classification-heading">
+                                            Classification
+                                        </h4>
+                                        <p>
+                                            The configurable 315-keyword
+                                            vocabulary contains 94 School, 111
+                                            Work, and 110 Personal terms. Multi-word
+                                            phrases receive weighted matches,
+                                            while an extension contributes only
+                                            +1. A confidence threshold prevents
+                                            weak or ambiguous files from being
+                                            forced into a category.
+                                        </p>
+                                    </section>
+                                    <section
+                                        class="sortflow-detail-block"
+                                        aria-labelledby="sortflow-extraction-heading"
+                                    >
+                                        <h5 id="sortflow-extraction-heading">
+                                            Extraction &amp; processing
+                                        </h5>
+                                        <p>
+                                            TXT, PDF, DOCX, PPTX, PNG, JPG, and
+                                            JPEG content is handled through
+                                            format-specific extractors using
+                                            PyMuPDF, python-docx, python-pptx,
+                                            and local Tesseract OCR. Heavy
+                                            libraries are imported lazily only
+                                            for their relevant formats.
+                                        </p>
+                                    </section>
+                                    <section
+                                        class="sortflow-detail-block"
+                                        aria-labelledby="sortflow-reliability-heading"
+                                    >
+                                        <h4 id="sortflow-reliability-heading">
+                                            Reliability
+                                        </h4>
+                                        <p>
+                                            Watchdog events enter a thread-safe
+                                            queue for worker processing. Files
+                                            remain untouched until size and
+                                            modification time stabilize across
+                                            three one-second checks. Unstable
+                                            files are abandoned after 60 seconds;
+                                            dirty paths are rechecked, and
+                                            collisions use atomic no-overwrite
+                                            operations.
+                                        </p>
+                                    </section>
+                                </div>
+
+                                <section
+                                    class="sortflow-demo"
+                                    aria-labelledby="sortflow-demo-heading"
+                                >
+                                    <div class="sortflow-demo-heading">
+                                        <h4 id="sortflow-demo-heading">
+                                            Live demo
+                                        </h4>
+                                        <a
+                                            class="context-nav-link"
+                                            href="https://github.com/Migelitz/SortFlow#demo"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            >Open demo source &#8599;</a
+                                        >
+                                    </div>
+                                    <p>
+                                        The demo shows content-aware
+                                        classification across document, text,
+                                        and image formats, including OCR and
+                                        confidence-based fallback to
+                                        Uncategorized.
+                                    </p>
+                                    <dl class="sortflow-demo-results">
+                                        <div><dt>Work</dt><dd>Q4 Operations Update (.pptx); Software Development Project Proposal (.docx)</dd></div>
+                                        <div><dt>Personal</dt><dd>Family Plan (.png); Monthly Financial Statement (.pdf)</dd></div>
+                                        <div><dt>School</dt><dd>Enrollment Requirements (.jpg); cs lecture notes (.txt)</dd></div>
+                                        <div><dt>Uncategorized</dt><dd>server_cleanup_utility_script.py</dd></div>
+                                    </dl>
+                                </section>
+
+                                <dl class="sortflow-evidence">
+                                    <div>
+                                        <dt>Automated tests</dt>
+                                        <dd>33/33 passed in 0.37 seconds with <code>uv run pytest</code>; 5 test modules cover classifier, database, extractor, organizer, and watcher behavior.</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Manual QA</dt>
+                                        <dd>6/6 scenarios passed, including lazy OCR, below-threshold fallback, duplicate collisions, and SQLite telemetry.</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Memory measurement</dt>
+                                        <dd>Using Python <code>tracemalloc</code>: 1.32 MB extractor startup footprint and 31.39 MB additional allocation for heavy libraries. These are allocation measurements, not process RSS.</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Linux integration</dt>
+                                        <dd>Tested <code>systemd --user</code> enablement, reboot startup in XFCE, and headless Downloads monitoring and routing.</dd>
+                                    </div>
+                                </dl>
+                                </div>
+                            </details>
                         </div>
                     </article>
 
@@ -513,9 +724,25 @@
                             </div>
                             <h3 id="title-autoval">AutoVal</h3>
                             <p class="project-description">
-                                An end-to-end machine learning web application
-                                for predicting second-hand vehicle values.
+                                Predict used-vehicle values from 100k+ listings
+                                through an end-to-end machine learning service.
                             </p>
+                            <div class="project-actions">
+                                <a
+                                    class="project-link"
+                                    href="https://github.com/ThreeBytes-Studio/AutoVal"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    >View repository
+                                    <span aria-hidden="true">&#8599;</span></a
+                                >
+                                <a
+                                    class="project-notes-link"
+                                    href="#project-notes-autoval"
+                                    >View project notes
+                                    <span aria-hidden="true">&darr;</span></a
+                                >
+                            </div>
                             <ul
                                 class="tech-stack-list"
                                 aria-label="Technologies used in AutoVal"
@@ -526,25 +753,17 @@
                                 <li class="tech-stack">Scikit-learn</li>
                                 <li class="tech-stack">PostgreSQL</li>
                             </ul>
-                            <div class="project-actions">
-                                <a
-                                    class="project-link"
-                                    href="https://github.com/ThreeBytes-Studio/AutoVal"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    >Repository
-                                    <span aria-hidden="true">&#8599;</span></a
-                                >
-                                <a
-                                    class="project-notes-link"
-                                    href="#project-notes-autoval"
-                                    >Project notes
-                                    <span aria-hidden="true">&darr;</span></a
-                                >
-                            </div>
                         </div>
 
                         <div class="project-narrative">
+                            <div class="project-visual autoval-visual" aria-label="AutoVal showcase">
+                                <img
+                                    class="autoval-showcase"
+                                    src="assets/autoval_image.jpg"
+                                    alt="AutoVal vehicle valuation application showcase"
+                                    loading="lazy"
+                                />
+                            </div>
                             <dl class="project-specs">
                                 <div class="spec-item">
                                     <dt>Role</dt>
@@ -585,15 +804,17 @@
                                 </div>
                             </dl>
 
-                            <section
+                            <details
                                 class="project-notes"
                                 id="project-notes-autoval"
-                                aria-labelledby="notes-heading-autoval"
+                                aria-label="AutoVal project notes"
                             >
+                                <summary class="project-notes-summary">
+                                    <span>Project notes &mdash; AutoVal</span>
+                                    <span class="project-notes-toggle" aria-hidden="true">+</span>
+                                </summary>
+                                <div class="project-notes-content">
                                 <div class="project-notes-header">
-                                    <h4 id="notes-heading-autoval">
-                                        Project notes &mdash; AutoVal
-                                    </h4>
                                     <div
                                         class="project-context-nav"
                                         aria-label="AutoVal section navigation"
@@ -617,7 +838,8 @@
                                     support second-hand vehicle valuation in a
                                     collaborative team workflow.
                                 </p>
-                            </section>
+                                </div>
+                            </details>
                         </div>
                     </article>
 
@@ -638,10 +860,26 @@
                             </div>
                             <h3 id="title-sentinel">Sentinel Risk Engine</h3>
                             <p class="project-description">
-                                A transaction-scoring system combining machine
-                                learning with a multi-language software
-                                architecture.
+                                Score transactions locally by connecting a
+                                Python-trained model to Java through native C
+                                and JNI code.
                             </p>
+                            <div class="project-actions">
+                                <a
+                                    class="project-link"
+                                    href="https://github.com/Migelitz/Sentinel-Risk-Engine"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    >View repository
+                                    <span aria-hidden="true">&#8599;</span></a
+                                >
+                                <a
+                                    class="project-notes-link"
+                                    href="#project-notes-sentinel"
+                                    >View project notes
+                                    <span aria-hidden="true">&darr;</span></a
+                                >
+                            </div>
                             <ul
                                 class="tech-stack-list"
                                 aria-label="Technologies used in Sentinel Risk Engine"
@@ -653,25 +891,20 @@
                                 <li class="tech-stack">Java</li>
                                 <li class="tech-stack">SQLite</li>
                             </ul>
-                            <div class="project-actions">
-                                <a
-                                    class="project-link"
-                                    href="https://github.com/Migelitz/Sentinel-Risk-Engine"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    >Repository
-                                    <span aria-hidden="true">&#8599;</span></a
-                                >
-                                <a
-                                    class="project-notes-link"
-                                    href="#project-notes-sentinel"
-                                    >Project notes
-                                    <span aria-hidden="true">&darr;</span></a
-                                >
-                            </div>
                         </div>
 
                         <div class="project-narrative">
+                            <div class="project-visual sentinel-visual" aria-label="Sentinel multi-language boundary diagram">
+                                <video
+                                    class="sentinel-video"
+                                    controls
+                                    preload="metadata"
+                                    aria-label="Sentinel Risk Engine demonstration"
+                                >
+                                    <source src="assets/sentinel-risk-engine_demo.mp4" type="video/mp4" />
+                                    Your browser does not support HTML video.
+                                </video>
+                            </div>
                             <dl class="project-specs">
                                 <div class="spec-item">
                                     <dt>Role</dt>
@@ -708,16 +941,17 @@
                                 </div>
                             </dl>
 
-                            <section
+                            <details
                                 class="project-notes"
                                 id="project-notes-sentinel"
-                                aria-labelledby="notes-heading-sentinel"
+                                aria-label="Sentinel Risk Engine project notes"
                             >
+                                <summary class="project-notes-summary">
+                                    <span>Project notes &mdash; Sentinel Risk Engine</span>
+                                    <span class="project-notes-toggle" aria-hidden="true">+</span>
+                                </summary>
+                                <div class="project-notes-content">
                                 <div class="project-notes-header">
-                                    <h4 id="notes-heading-sentinel">
-                                        Project notes &mdash; Sentinel Risk
-                                        Engine
-                                    </h4>
                                     <div
                                         class="project-context-nav"
                                         aria-label="Sentinel Risk Engine section navigation"
@@ -742,7 +976,8 @@
                                     C/C++ code via m2cgen and JNI into a Java 17
                                     application with SQLite persistence.
                                 </p>
-                            </section>
+                                </div>
+                            </details>
                         </div>
                     </article>
                 </div>
